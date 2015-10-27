@@ -60,6 +60,7 @@
             result_str = '0',
             result_field = null,
             equation_queue = [],
+            is_digit_last = false;
             actions = [
                 {
                     type: 'digit_mod',
@@ -243,6 +244,7 @@
                     } else {
                         updateResult(result_str + action.id);
                     }
+                    is_digit_last = true;
 
                 // equation modificators
                 } else if (action.type === 'digit_mod') {
@@ -261,12 +263,14 @@
                     } else if (action.id === 'dot') {
                         updateResult(result_str + '.');
                     }
+                    is_digit_last = false;
 
                 // equations
                 } else if (action.type === 'equation') {
                     if (action.func) {
                         pushEquation(action);
                     }
+                    is_digit_last = false;
                 }
             }
         }
@@ -277,11 +281,22 @@
                 action_pre_id = '',
                 action_pre = null;
 
+            if (!is_digit_last) {
+                if (equation_queue.length && equation_queue.length === 2) {
+                    equation_queue.pop();
+                    equation_queue.push(action.id);
+                } else {
+                    equation_queue.push(getResult(), action.id);
+                }
+                console.log('rewrite equation', equation_queue);
+                return;
+            }
+
             if (equation_queue.length && equation_queue.length === 2) {
                 res1 = equation_queue.shift();
                 action_pre_id = equation_queue.shift();
                 action_pre = getAction(action_pre_id);
-                console.log('filled arr' + action_pre.func(
+                console.log('filled arr ' + action_pre.func(
                     res1,
                     getResult()
                 ), []);
@@ -295,7 +310,7 @@
             }
 
             if (action.queue && action.queue === 1) {
-                console.log('instant compute' + action.func(getResult()), equation_queue);
+                console.log('instant compute ' + action.func(getResult()), equation_queue);
                 updateResult(action.func(getResult()));
             } else {
                 equation_queue.push(getResult(), action.id);
@@ -347,7 +362,8 @@
                 }
 
                 result_field = document.getElementsByClassName('eycal__input')[0];
-                updateResult(result_str);
+                updateResult('0');
+                is_digit_last = true;
             }
         };
     };
