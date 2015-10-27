@@ -42,10 +42,10 @@ body {
 .eycal__col_digit .eycal__button {
   width: 33.33%;
 }
-.eycal__col_equation {
+.eycal__col_operation {
   width: 25%;
 }
-.eycal__col_equation .eycal__button {
+.eycal__col_operation .eycal__button {
   width: 100%;
 }
 .eycal__button {
