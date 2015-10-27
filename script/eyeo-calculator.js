@@ -45,7 +45,6 @@
         if (key_code) {
             document.addEventListener('keypress', function(e) {
                 e.stopPropagation();
-                console.log(e.keyCode, key_code);
                 if (e.keyCode === key_code) {
                     el.focus();
                     el.dispatchEvent(evt);
