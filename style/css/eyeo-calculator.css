@@ -1,0 +1,69 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+.eycal-container {
+  margin: 10% auto;
+  width: 240px;
+  font-family: Lato, Helvetica, Roboto, Arial, sans-serif;
+  padding: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+}
+.eycal-container * {
+  box-sizing: border-box;
+}
+.eycal__input {
+  resize: none;
+  overflow: auto;
+  background-color: transparent;
+  border: 1px solid #cccccc;
+  outline: 0;
+  width: 100%;
+  border-radius: 0;
+  padding: 2px 8px;
+  text-align: right;
+  font-size: 14px;
+}
+.eycal__row {
+  margin-top: 10px;
+}
+.eycal__col {
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+}
+.eycal__col_digit {
+  width: 75%;
+}
+.eycal__col_digit .eycal__button {
+  width: 33.33%;
+}
+.eycal__col_equation {
+  width: 25%;
+}
+.eycal__col_equation .eycal__button {
+  width: 100%;
+}
+.eycal__button {
+  background-color: transparent;
+  border: 1px solid #cccccc;
+  outline: 0;
+  border-radius: 2px;
+  margin: 0 -1px -1px 0;
+  width: 40px;
+  font-size: 14px;
+  position: relative;
+  height: 2em;
+  display: inline-block;
+  vertical-align: top;
+}
+.eycal__button:focus {
+  border-color: #050505;
+  outline: 0;
+  box-shadow: 0 0 10px #cccccc;
+  z-index: 2;
+}
