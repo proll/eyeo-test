@@ -1,6 +1,4 @@
-// -1/90 doesnt work
-
-(function (global) {
+(function () {
     var eycal = {},
         app = null;
 
@@ -261,7 +259,9 @@
                             }
 
                         } else if (action.id === 'dot' && !is_block) {
-                            updateResult(result_str + '.');
+                            if (result_str.indexOf('.') === -1) {
+                                updateResult(result_str + '.');
+                            }
                         }
                         is_digit_last = false;
 
@@ -375,4 +375,4 @@
 
     app = new eycal.App();
     app.init();
-})(window);
+})();
